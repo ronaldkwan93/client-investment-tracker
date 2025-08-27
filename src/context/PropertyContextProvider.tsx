@@ -12,6 +12,7 @@ type PropertyContextType = {
 };
 
 export interface Property {
+    id: number;
   address: string;
   suburb: string;
   state: string;
