@@ -4,6 +4,7 @@ import "./index.css";
 import Dashboard from "./pages/Dashboard";
 import Investments from "./pages/Investments";
 import PropertyContextProvider from "./context/PropertyContextProvider";
+import Property from "./pages/Property";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/investments" element={<Investments />} />
+            <Route path="/property/:id" element={<Property />} />
           </Routes>
         </BrowserRouter>
       </PropertyContextProvider>
