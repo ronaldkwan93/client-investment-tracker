@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Property } from "../context/PropertyContextProvider";
-import { getPropertyById } from "../services/data-service";
+import { getPropertyById, updateInvestment } from "../services/data-service";
 import AddressMap from "../components/GoogleMaps/AddressMap";
 
 const Property = () => {
@@ -17,8 +17,11 @@ const Property = () => {
 
   console.log(data);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!data) return;
+    const result = await updateInvestment(Number(id), data);
+    console.log(result);
   };
 
   return (
@@ -40,14 +43,16 @@ const Property = () => {
           <input
             type="text"
             placeholder="Address"
-            value={data?.address}
+            value={data?.address ?? ""}
+            onChange={(e) => setData({ ...data!, address: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-12 text-lg text-gray-700"
           />
           <label htmlFor="">Suburb</label>
 
           <input
             type="text"
-            value={data?.suburb}
+            value={data?.suburb ?? ""}
+            onChange={(e) => setData({ ...data!, suburb: e.target.value })}
             placeholder="Suburb"
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-12 text-lg text-gray-700"
           />
@@ -56,7 +61,8 @@ const Property = () => {
           <input
             type="text"
             placeholder="State"
-            value={data?.state}
+            value={data?.state ?? ""}
+            onChange={(e) => setData({ ...data!, state: e.target.value })}
             className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-12 text-lg text-gray-700"
           />
           <label htmlFor="">Purchase Price</label>

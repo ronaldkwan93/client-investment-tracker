@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Property } from "../context/PropertyContextProvider";
 import { addNewInvestment } from "../services/data-service";
+import AddressMap from "../components/GoogleMaps/AddressMap";
 
 const CreateInvestment = () => {
   const navigate = useNavigate();
-  const [success, setSuccess]  = useState(false);
+  const [success, setSuccess] = useState(false);
   const [data, setData] = useState<Property>({
     id: null,
     address: "",
@@ -18,20 +19,20 @@ const CreateInvestment = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const result = await addNewInvestment(data);
-    if(result !== undefined) {
-        setSuccess(true);
+    if (result !== undefined) {
+      setSuccess(true);
     }
   };
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-6">
-      {/* {data && (
-        <div className="border-4 border-blue-500 rounded-lg overflow-hidden w-full max-w-5/6">
+      {data && (
+        <div className=" rounded-lg overflow-hidden w-full max-w-5/6">
           <AddressMap
             address={`${data.address}, ${data.suburb}, ${data.state}`}
           />
         </div>
-      )} */}
+      )}
       {success && <div>Investment created!</div>}
       <h1 className="border px-2 text-2xl shadow-2xl rounded-lg">
         Add new investment
