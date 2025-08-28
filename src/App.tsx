@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Investments from "./pages/Investments";
 import PropertyContextProvider from "./context/PropertyContextProvider";
 import Property from "./pages/Property";
+import CreateInvestment from "./pages/CreateInvestment";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/investments" element={<Investments />} />
             <Route path="/property/:id" element={<Property />} />
+            <Route path="/create-new" element={<CreateInvestment />} />
           </Routes>
         </BrowserRouter>
       </PropertyContextProvider>
