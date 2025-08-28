@@ -49,3 +49,22 @@ export const addNewInvestment = async (data: Property) => {
 
   return result;
 };
+
+export const updateInvestment = async(id: number, data:Property) => {
+    const response = await fetch(`${API_BASE_URL}/property/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+     const message = result?.message || "Unknown error occurred";
+    throw new Error(message);
+  }
+
+  return result;
+}
