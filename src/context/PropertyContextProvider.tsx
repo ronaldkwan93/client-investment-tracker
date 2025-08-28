@@ -8,6 +8,8 @@ export const PropertyContext = createContext<PropertyContextType | undefined>(
 
 type PropertyContextType = {
   properties: Property[];
+  refresh: boolean;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
   setProperties: React.Dispatch<React.SetStateAction<Property[]>>;
 };
 
@@ -28,15 +30,16 @@ const PropertyContextProvider = ({
   children,
 }: PropertyContextProviderProps) => {
   const [properties, setProperties] = useState<Property[]>([]);
+  const [refresh,setRefresh] = useState(false);
 
   useEffect(() => {
     getProperties().then((data) => {
       if (data) setProperties(data);
     });
-  }, []);
+  }, [refresh]);
 
   return (
-    <PropertyContext.Provider value={{ properties, setProperties }}>
+    <PropertyContext.Provider value={{ properties, setProperties, setRefresh, refresh }}>
       {children}
     </PropertyContext.Provider>
   );

@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import type { Property } from "../context/PropertyContextProvider";
+import {
+  PropertyContext,
+  type Property,
+} from "../context/PropertyContextProvider";
 import { getPropertyById, updateInvestment } from "../services/data-service";
 import AddressMap from "../components/GoogleMaps/AddressMap";
 
@@ -8,6 +11,11 @@ const Property = () => {
   const [data, setData] = useState<Property>();
   const { id } = useParams();
   const navigate = useNavigate();
+  const context = useContext(PropertyContext);
+  if (!context)
+    throw new Error("PropertyList must be used within PropertyContextProvider");
+
+  const { setRefresh, refresh } = context;
 
   useEffect(() => {
     if (id !== undefined) {
@@ -22,6 +30,8 @@ const Property = () => {
     if (!data) return;
     const result = await updateInvestment(Number(id), data);
     console.log(result);
+    setRefresh(!refresh);
+    navigate("/investments");
   };
 
   return (

@@ -19,11 +19,11 @@ const RecentPropCard = ({ property }: PropertyCardProps) => {
         </div>
         <div>
           <h2>Purchase Price</h2>
-          <p className="text-gray-600">${property.purchasePrice}</p>
+          <p className="text-gray-600">${(property.purchasePrice)?.toLocaleString()}</p>
         </div>
         <div>
           <h2>Weekly Rent</h2>
-          <p className="text-gray-600">${property.weeklyRent}</p>
+          <p className="text-gray-600">${(property.weeklyRent)?.toLocaleString()}</p>
         </div>
       </div>
       <div>{/* <img className="w-20 " src={logo} alt="" /> */}</div>

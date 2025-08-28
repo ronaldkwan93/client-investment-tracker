@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Property } from "../context/PropertyContextProvider";
+import { PropertyContext, type Property } from "../context/PropertyContextProvider";
 import { addNewInvestment } from "../services/data-service";
 import AddressMap from "../components/GoogleMaps/AddressMap";
 
@@ -15,6 +15,11 @@ const CreateInvestment = () => {
     purchasePrice: null,
     weeklyRent: null,
   });
+  const context = useContext(PropertyContext);
+  if (!context)
+    throw new Error("PropertyList must be used within PropertyContextProvider");
+
+  const { setRefresh, refresh } = context;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +27,8 @@ const CreateInvestment = () => {
     if (result !== undefined) {
       setSuccess(true);
     }
+    setRefresh(!refresh);
+    navigate("/investments");
   };
 
   return (
