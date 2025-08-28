@@ -23,9 +23,9 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
         <p className="text-gray-600">Suburb: {property.suburb}</p>
         <p className="text-gray-600">State: {property.state}</p>
         <p className="text-gray-600">
-          Purchase price: ${property.purchasePrice}
+          Purchase price: ${(property.purchasePrice)?.toLocaleString()}
         </p>
-        <p className="text-gray-600">Weekly rent: ${property.weeklyRent}</p>
+        <p className="text-gray-600">Weekly rent: ${(property.weeklyRent)?.toLocaleString()}</p>
         <p
           className="text-red-600 border w-22 rounded-lg text-center transform transition-transform duration-500 
                hover:-translate-y-0.5 bg-red-100 cursor-pointer"

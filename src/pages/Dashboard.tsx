@@ -42,10 +42,10 @@ const Dashboard = () => {
           <p>Weekly rental income:</p>
           <h1 className="text-5xl">
             $
-            {properties.reduce(
+            {(properties.reduce(
               (acc, property) => acc + (property.weeklyRent ?? 0),
               0
-            )}
+            )).toLocaleString()}
           </h1>
         </div>
         <div
@@ -55,10 +55,10 @@ const Dashboard = () => {
           <p>Total Portfolio value:</p>
           <h1 className="text-4xl">
             $
-            {properties.reduce(
+            {(properties.reduce(
               (acc, property) => acc + (property.purchasePrice ?? 0),
               0
-            )}
+            )).toLocaleString()}
           </h1>
         </div>
       </div>
