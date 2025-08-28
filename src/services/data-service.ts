@@ -1,3 +1,5 @@
+import type { Property } from "../context/PropertyContextProvider";
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const getProperties = async () => {
@@ -27,4 +29,23 @@ export const getPropertyById = async (id: number) => {
     const result = await response.json();
     return result;
   } catch (error) {}
+};
+
+export const addNewInvestment = async (data: Property) => {
+  const response = await fetch(`${API_BASE_URL}/property`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+     const message = result?.message || "Unknown error occurred";
+    throw new Error(message);
+  }
+
+  return result;
 };

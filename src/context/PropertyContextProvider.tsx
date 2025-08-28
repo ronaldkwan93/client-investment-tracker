@@ -12,12 +12,12 @@ type PropertyContextType = {
 };
 
 export interface Property {
-    id: number;
+  id: number | null;
   address: string;
   suburb: string;
   state: string;
-  purchasePrice: number;
-  weeklyRent: number;
+  purchasePrice: number | null;
+  weeklyRent: number | null;
 }
 
 type PropertyContextProviderProps = {

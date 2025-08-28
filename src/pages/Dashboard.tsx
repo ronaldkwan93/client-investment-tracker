@@ -19,14 +19,14 @@ const Dashboard = () => {
           <p>Weekly rental income:</p>
           <h1 className="text-5xl">
             $
-            {properties.reduce((acc, property) => acc + property.weeklyRent, 0)}
+            {properties.reduce((acc, property) => acc + (property.weeklyRent ?? 0), 0)}
           </h1>
         </div>
         <div className="border h-50 w-50 rounded-xl flex flex-col justify-evenly items-center">
           <p>Total Portfolio value:</p>
           <h1 className="text-4xl">
             $
-            {properties.reduce((acc, property) => acc + property.purchasePrice, 0)}
+            {properties.reduce((acc, property) => acc + (property.purchasePrice ?? 0), 0)}
           </h1>
         </div>
       </div>
