@@ -6,6 +6,7 @@ import Investments from "./pages/Investments";
 import PropertyContextProvider from "./context/PropertyContextProvider";
 import Property from "./pages/Property";
 import CreateInvestment from "./pages/CreateInvestment";
+import CopilotWidget from "./components/Copilot/CopilotWidget";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/property/:id" element={<Property />} />
             <Route path="/create-new" element={<CreateInvestment />} />
           </Routes>
+          <CopilotWidget />
         </BrowserRouter>
       </PropertyContextProvider>
     </>

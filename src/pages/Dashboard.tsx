@@ -16,14 +16,12 @@ const Dashboard = () => {
   const { properties } = context;
 
   useEffect(() => {
-    getRecentProperties().then((result) => setRecentProps(result));
+    getRecentProperties().then((result) => setRecentProps(result ?? []));
   }, []);
 
   const handleViewProperty = () => {
     navigate("/investments");
   };
-
-  console.log(recentProps);
 
   return (
     <div className="m-1 h-screen bg-neutral-100 flex flex-col items-center gap-5 pt-5 mx-35 rounded-sm my-10">

@@ -17,7 +17,9 @@ export const getProperties = async () => {
 
     const result = await response.json();
     return result;
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 };
 
 export const getPropertyById = async (id: number) => {
@@ -84,5 +86,7 @@ export const getRecentProperties = async () => {
 
     const result = await response.json();
     return result;
-  } catch (error) {}
+  } catch (error) {
+    return [];
+  }
 };
