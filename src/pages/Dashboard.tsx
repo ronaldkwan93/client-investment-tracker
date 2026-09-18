@@ -84,7 +84,7 @@ const Dashboard = () => {
           </button>
           <h1>Recently updated investments..</h1>
         </div>
-        {recentProps.map((properties, index) => (
+        {recentProps.slice(0, 3).map((properties, index) => (
           <div key={index}>
             <RecentPropCard property={properties} />
           </div>
