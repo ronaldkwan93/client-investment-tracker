@@ -1,6 +1,8 @@
-# Investment Property Portfolio app
+# EstateFlow
 
 A dashboard for tracking real estate investment properties — portfolio value, rental yields, property details, and an AI copilot for asking questions about the portfolio in plain English.
+
+![alt text](image.png)
 
 ## Tech stack
 
