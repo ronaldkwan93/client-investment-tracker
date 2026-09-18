@@ -2,19 +2,19 @@
 
 A dashboard for tracking real estate investment properties — portfolio value, rental yields, property details, and an AI copilot for asking questions about the portfolio in plain English.
 
-![alt text](image.png)
+![Image](https://github.com/user-attachments/assets/975b5158-eb86-4e39-8297-3de960eafeb4)
 
 ## Tech stack
 
-| Technology | Why it was used |
-| --- | --- |
-| **React 19 + TypeScript** | Component-based UI with type safety, catching bugs (like data shape mismatches) at compile time rather than in the browser. |
-| **Vite** | Fast dev server with hot module reload and a lean production build, avoiding the config overhead of older bundlers. |
-| **React Router** | Client-side routing between the dashboard, property list, and property detail pages without full page reloads. |
-| **Tailwind CSS** | Utility-first styling for building a consistent, responsive UI quickly without hand-rolling a separate CSS file per component. |
-| **Recharts** | Declarative charting library for visualizing portfolio value and rental income trends. |
-| **Google Maps API** (`@react-google-maps/api`) | Renders each property's location on a map from its address, giving an at-a-glance geographic view of the portfolio. |
-| **ESLint** | Enforces consistent code quality and catches common mistakes across the codebase. |
+| Technology                                     | Why it was used                                                                                                                |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **React 19 + TypeScript**                      | Component-based UI with type safety, catching bugs (like data shape mismatches) at compile time rather than in the browser.    |
+| **Vite**                                       | Fast dev server with hot module reload and a lean production build, avoiding the config overhead of older bundlers.            |
+| **React Router**                               | Client-side routing between the dashboard, property list, and property detail pages without full page reloads.                 |
+| **Tailwind CSS**                               | Utility-first styling for building a consistent, responsive UI quickly without hand-rolling a separate CSS file per component. |
+| **Recharts**                                   | Declarative charting library for visualizing portfolio value and rental income trends.                                         |
+| **Google Maps API** (`@react-google-maps/api`) | Renders each property's location on a map from its address, giving an at-a-glance geographic view of the portfolio.            |
+| **ESLint**                                     | Enforces consistent code quality and catches common mistakes across the codebase.                                              |
 
 The app is a pure frontend client — it talks to a separate backend API (see `VITE_API_BASE_URL` below) for property data, persistence, and the copilot's responses.
 
@@ -39,9 +39,9 @@ The app is a pure frontend client — it talks to a separate backend API (see `V
    cp .env.example .env
    ```
 
-   | Variable | Description |
-   | --- | --- |
-   | `VITE_API_BASE_URL` | Base URL of the backend API, e.g. `http://localhost:8080/api` |
+   | Variable               | Description                                                     |
+   | ---------------------- | --------------------------------------------------------------- |
+   | `VITE_API_BASE_URL`    | Base URL of the backend API, e.g. `http://localhost:8080/api`   |
    | `VITE_GOOGLE_MAPS_KEY` | Google Maps API key, used to render property addresses on a map |
 
 3. Start the dev server:
