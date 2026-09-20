@@ -1,6 +1,8 @@
-# EstateFlow
+# EstateFlow (S3 + Cloudfront)
 
 A dashboard for tracking real estate investment properties — portfolio value, rental yields, property details, and an AI copilot for asking questions about the portfolio in plain English.
+
+**Live:** [d2xrulawgtlxu4.cloudfront.net](https://d2xrulawgtlxu4.cloudfront.net/)
 
 ![Image](https://github.com/user-attachments/assets/975b5158-eb86-4e39-8297-3de960eafeb4)
 
@@ -15,6 +17,7 @@ A dashboard for tracking real estate investment properties — portfolio value, 
 | **Recharts**                                   | Declarative charting library for visualizing portfolio value and rental income trends.                                         |
 | **Google Maps API** (`@react-google-maps/api`) | Renders each property's location on a map from its address, giving an at-a-glance geographic view of the portfolio.            |
 | **ESLint**                                     | Enforces consistent code quality and catches common mistakes across the codebase.                                              |
+| **AWS S3 + CloudFront**                        | Hosts and serves the production build as a static site with global CDN caching.                                                |
 
 The app is a pure frontend client — it talks to a separate backend API (see `VITE_API_BASE_URL` below) for property data, persistence, and the copilot's responses.
 
