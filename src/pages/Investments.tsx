@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PropertyCardsContainer from "../components/PropertyCardsContainer/PropertyCardsContainer";
-import PropertyFilter from "../components/PropertyFilter/PropertyFilter";
+// import PropertyFilter from "../components/PropertyFilter/PropertyFilter";
 import { MdAddBox } from "react-icons/md";
 
 const Investments = () => {

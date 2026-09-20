@@ -1,6 +1,6 @@
 import {
-  LineChart,
-  Line,
+  // LineChart,
+  // Line,
   XAxis,
   YAxis,
   Tooltip,
@@ -8,10 +8,10 @@ import {
   BarChart,
   Legend,
   Bar,
-  PieChart,
-  Pie,
-  Cell,
-  LabelList,
+  // PieChart,
+  // Pie,
+  // Cell,
+  // LabelList,
 } from "recharts";
 import type { Property } from "../../context/PropertyContextProvider";
 
@@ -29,7 +29,7 @@ const Charts = ({ data }: ChartsProps) => {
         : 0,
   }));
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  // const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   return (
     <div className="flex gap-10">
