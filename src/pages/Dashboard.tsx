@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+﻿import { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "../context/PropertyContextProvider";
 import Charts from "../components/Charts/Charts";
 import { getRecentProperties } from "../services/data-service";
@@ -27,14 +27,14 @@ const Dashboard = () => {
     <div className="m-1 h-screen bg-neutral-100 flex flex-col items-center gap-5 pt-5 mx-35 rounded-sm my-10">
       <div className="flex w-3xl justify-evenly">
         <div
-          className="border-none h-50 w-50 shadow-lg rounded-xl flex flex-col justify-evenly items-center transform transition-transform duration-200 
+          className="border-none h-50 w-50 shadow-lg rounded-xl flex flex-col justify-evenly items-center text-center p-8 transform transition-transform duration-200
                hover:-translate-y-1 hover:-translate-x-1 bg-blue-100"
         >
           <p>Properties:</p>
           <h1 className="text-7xl">{properties.length}</h1>
         </div>
         <div
-          className="border-none h-50 w-50 rounded-xl shadow-lg flex flex-col justify-evenly items-center transform transition-transform duration-200 
+          className="border-none h-50 w-50 rounded-xl shadow-lg flex flex-col justify-evenly items-center text-center p-8 transform transition-transform duration-200
                hover:-translate-y-1 hover:-translate-x-1 bg-orange-100"
         >
           <p>Weekly rental income:</p>
@@ -47,7 +47,7 @@ const Dashboard = () => {
           </h1>
         </div>
         <div
-          className="border-none h-50 w-50 rounded-xl shadow-lg flex flex-col justify-evenly items-center transform transition-transform duration-200 
+          className="border-none h-50 w-50 rounded-xl shadow-lg flex flex-col justify-evenly items-center text-center p-8 transform transition-transform duration-200
                hover:-translate-y-1 hover:-translate-x-1 bg-red-100"
         >
           <p>Total Portfolio value:</p>

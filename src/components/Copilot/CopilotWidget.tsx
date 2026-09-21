@@ -5,8 +5,12 @@ import { IoClose } from "react-icons/io5";
 import { sendChatMessage } from "../../services/chat-service";
 import type { ChatMessage } from "../../services/chat-service";
 
-const CopilotWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface CopilotWidgetProps {
+  isOpen: boolean;
+  onOpenChange: (isOpen: boolean) => void;
+}
+
+const CopilotWidget = ({ isOpen, onOpenChange }: CopilotWidgetProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -52,7 +56,7 @@ const CopilotWidget = () => {
           <div className="flex items-center justify-between rounded-t-md border-b border-gray-200 bg-sky-200 px-4 py-3">
             <span className="font-medium">Investment Copilot</span>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => onOpenChange(false)}
               aria-label="Close chat"
               className="cursor-pointer text-gray-700 hover:text-gray-900"
             >
@@ -125,7 +129,7 @@ const CopilotWidget = () => {
       )}
 
       <button
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => onOpenChange(!isOpen)}
         aria-label={isOpen ? "Close copilot chat" : "Open copilot chat"}
         className="cursor-pointer rounded-full bg-sky-200 p-4 shadow-lg transition-transform duration-200 hover:-translate-y-1"
       >

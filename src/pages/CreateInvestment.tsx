@@ -15,14 +15,28 @@ const CreateInvestment = () => {
     purchasePrice: null,
     weeklyRent: null,
   });
+  const [errors, setErrors] = useState<{ purchasePrice?: string; weeklyRent?: string }>({});
   const context = useContext(PropertyContext);
   if (!context)
     throw new Error("PropertyList must be used within PropertyContextProvider");
 
   const { setRefresh, refresh } = context;
 
+  const validate = () => {
+    const newErrors: { purchasePrice?: string; weeklyRent?: string } = {};
+    if (data.purchasePrice === null || data.purchasePrice <= 0) {
+      newErrors.purchasePrice = "Purchase price is required";
+    }
+    if (data.weeklyRent === null || data.weeklyRent <= 0) {
+      newErrors.weeklyRent = "Weekly rent is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validate()) return;
     const result = await addNewInvestment(data);
     if (result !== undefined) {
       setSuccess(true);
@@ -83,14 +97,22 @@ const CreateInvestment = () => {
             </span>
             <input
               type="number"
-              className="pl-7 pr-3 py-2 border rounded-md w-full"
+              className={`pl-7 pr-3 py-2 border rounded-md w-full ${
+                errors.purchasePrice ? "border-red-500" : ""
+              }`}
               placeholder="Purchase price"
               value={data.purchasePrice ?? ""}
               onChange={(e) =>
-                setData({ ...data, purchasePrice: Number(e.target.value) })
+                setData({
+                  ...data,
+                  purchasePrice: e.target.value === "" ? null : Number(e.target.value),
+                })
               }
             />
           </div>
+          {errors.purchasePrice && (
+            <p className="text-red-500 text-sm -mt-3">{errors.purchasePrice}</p>
+          )}
           <label htmlFor="">Weekly Rent</label>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
@@ -100,12 +122,20 @@ const CreateInvestment = () => {
               type="number"
               value={data.weeklyRent ?? ""}
               onChange={(e) =>
-                setData({ ...data, weeklyRent: Number(e.target.value) })
+                setData({
+                  ...data,
+                  weeklyRent: e.target.value === "" ? null : Number(e.target.value),
+                })
               }
-              className="pl-7 pr-3 py-2 border rounded-md w-full"
+              className={`pl-7 pr-3 py-2 border rounded-md w-full ${
+                errors.weeklyRent ? "border-red-500" : ""
+              }`}
               placeholder="Weekly rent"
             />
           </div>
+          {errors.weeklyRent && (
+            <p className="text-red-500 text-sm -mt-3">{errors.weeklyRent}</p>
+          )}
           <div className="flex gap-5">
             <button
               type="submit"

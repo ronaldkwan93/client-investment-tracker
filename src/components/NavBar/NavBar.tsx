@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { HiSparkles } from "react-icons/hi2";
 import logo from "../../assets/logo.png";
 
-const NavBar = () => {
+interface NavBarProps {
+  onOpenChat: () => void;
+}
+
+const NavBar = ({ onOpenChat }: NavBarProps) => {
   let navigate = useNavigate();
   return (
     <div className="flex justify-between px-10 py-6 border-b border-gray-200 select-none shadow-sm">
@@ -10,19 +15,29 @@ const NavBar = () => {
       </div>
       <div className="flex gap-5 items-center ">
         <ul
-          className="border p-1 shadow-sm rounded-md cursor-pointer transform transition-transform duration-200 
+          className="border p-1 shadow-sm rounded-md cursor-pointer transform transition-transform duration-200
                hover:-translate-y-1 bg-sky-200"
           onClick={() => navigate("/")}
         >
           Dashboard
         </ul>
         <ul
-          className="border p-1 rounded-md cursor-pointer transform transition-transform duration-200 
+          className="border p-1 rounded-md cursor-pointer transform transition-transform duration-200
                hover:-translate-y-1 bg-gray-200 shadow-lg"
           onClick={() => navigate("/investments")}
         >
           Investments
         </ul>
+        <button
+          onClick={onOpenChat}
+          aria-label="Open AI copilot chat"
+          title="Ask AI"
+          className="flex items-center gap-1 border p-1 px-2 rounded-md cursor-pointer transform transition-transform duration-200
+               hover:-translate-y-1 bg-linear-to-r from-sky-200 to-purple-200 shadow-lg"
+        >
+          <HiSparkles size={18} />
+          Ask EstateMate
+        </button>
       </div>
     </div>
   );

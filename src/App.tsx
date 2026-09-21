@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import "./index.css";
@@ -10,18 +11,20 @@ import CreateInvestment from "./pages/CreateInvestment";
 import CopilotWidget from "./components/Copilot/CopilotWidget";
 
 function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   return (
     <>
       <PropertyContextProvider>
         <BrowserRouter>
-          <NavBar />
+          <NavBar onOpenChat={() => setIsChatOpen(true)} />
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/investments" element={<Investments />} />
             <Route path="/property/:id" element={<Property />} />
             <Route path="/create-new" element={<CreateInvestment />} />
           </Routes>
-          <CopilotWidget />
+          <CopilotWidget isOpen={isChatOpen} onOpenChange={setIsChatOpen} />
         </BrowserRouter>
       </PropertyContextProvider>
     </>
