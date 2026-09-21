@@ -2,7 +2,7 @@
 
 A dashboard for tracking real estate investment properties — portfolio value, rental yields, property details, and an AI copilot for asking questions about the portfolio in plain English.
 
-**Live:** [d2xrulawgtlxu4.cloudfront.net](https://d2xrulawgtlxu4.cloudfront.net/)
+**Live:** [https://estate-flow.io/](https://estate-flow.io/)
 
 ![Image](https://github.com/user-attachments/assets/975b5158-eb86-4e39-8297-3de960eafeb4)
 
